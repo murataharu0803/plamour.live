@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts" setup>
 import data from "$lib/crosswordData";
 
 type CrossWordItem = {
@@ -53,6 +53,7 @@ const checkSwitchWord = (newRow: number, newCol: number) => {
 }
 
 const onKeyDown = (e: KeyboardEvent) => {
+  if (e.altKey || e.ctrlKey || e.metaKey) return
   e.preventDefault()
   if (e.key === 'ArrowUp') {
     let newRow = currentCell.row
