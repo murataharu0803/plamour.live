@@ -28,7 +28,7 @@ data.forEach(d => {
   }
 })
 
-const cellSize = 32
+const cellSize = 24
 
 const currentCell = { row: data[0].row, col: data[0].col }
 let currentWordIndex = 0
