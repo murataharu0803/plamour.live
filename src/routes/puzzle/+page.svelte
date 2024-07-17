@@ -33,11 +33,14 @@ const cellSize = 24
 const currentCell = { row: data[0].row, col: data[0].col }
 let currentWordIndex = 0
 
+let clueElements: (Element | null)[] = Array.from({ length: crosswordData.length }, () => null)
+
 const checkInWord = (row: number, col: number, item: CrossWordItem) =>
   item.direction === "across" && item.row === row && item.col <= col && col < item.col + item.word.length ||
   item.direction === "down" && item.col === col && item.row <= row && row < item.row + item.word.length
 
 const checkSwitchWord = (newRow: number, newCol: number) => {
+  const oldIndex = currentWordIndex
   const words = crosswordData.filter(d => checkInWord(newRow, newCol, d))
   if (words.length === 1) currentWordIndex = crosswordData.indexOf(words[0])
   if (words.length === 2) {
@@ -50,6 +53,8 @@ const checkSwitchWord = (newRow: number, newCol: number) => {
   }
   currentCell.row = newRow
   currentCell.col = newCol
+  if (currentWordIndex !== oldIndex && clueElements[currentWordIndex])
+    clueElements[currentWordIndex]?.scrollIntoView({ block: 'center', inline: 'center', behavior: 'smooth' })
 }
 
 const onKeyDown = (e: KeyboardEvent) => {
@@ -125,7 +130,7 @@ $: corrects = crosswordData.map(d => getWord(userGrid, d) === d.word.toUpperCase
 
 <div use:onload class="h-dvh flex flex-row items-center justify-center">
   <div
-    class="relative flex-grow-0 m-4"
+    class="relative flex-grow-0 m-8"
     style:width={cellSize * gridWidth + 'px'}
     style:height={cellSize * gridHeight + 'px'}
   >
@@ -151,11 +156,12 @@ $: corrects = crosswordData.map(d => getWord(userGrid, d) === d.word.toUpperCase
       {/each}
     {/each}
   </div>
-  <div class="flex-1 p-8">
-    <div class="overflow-auto pr-4" style:height="calc(100dvh - 64px)">
+  <div class="flex-1 p-8 pl-0">
+    <div class="overflow-auto pr-3" style:height="calc(100dvh - 64px)">
       {#each crosswordData as { clue, row, col }, i}
         <div
-          class="flex flex-row items-center my-4 p-4 rounded-md border-2 border-solid border-white/30 hover:bg-white/10 transition-colors"
+          bind:this={clueElements[i]}
+          class="flex flex-row items-center my-4 p-4 rounded-md border-2 border-solid border-white/30 hover:bg-white/10 transition-colors first:mt-0 last:mb-0"
           class:bg-gray-700={i === currentWordIndex && !corrects[i]}
           class:bg-gray-900={i !== currentWordIndex && !corrects[i]}
           class:bg-green-900={i !== currentWordIndex && corrects[i]}
