@@ -41,7 +41,6 @@ const init = async() => {
       const r = direction === "down" ? row + i : row
       const c = direction === "across" ? col + i : col
       answerGrid[r][c] = word[i].toUpperCase()
-      userGrid[r][c] = word[i].toUpperCase() // temp
     }
   })
 
