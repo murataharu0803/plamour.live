@@ -190,14 +190,14 @@ $: allCorrect = corrects.every(c => c)
         <div
           bind:this={clueElements[i]}
           class="flex flex-row items-center my-4 p-4 rounded-md border-2 border-solid border-white/30 transition-colors first:mt-0 last:mb-0"
-          class:bg-gray-700={i === currentWordIndex && !corrects[i]}
-          class:bg-gray-900={i !== currentWordIndex && !corrects[i]}
-          class:bg-green-900={i !== currentWordIndex && corrects[i]}
-          class:bg-green-700={i === currentWordIndex && corrects[i]}
-          class:hover:bg-gray-600={i === currentWordIndex && !corrects[i]}
-          class:hover:bg-gray-800={i !== currentWordIndex && !corrects[i]}
-          class:hover:bg-green-800={i !== currentWordIndex && corrects[i]}
-          class:hover:bg-green-600={i === currentWordIndex && corrects[i]}
+          class:bg-gray-800={i === currentWordIndex && !corrects[i]}
+          class:bg-gray-950={i !== currentWordIndex && !corrects[i]}
+          class:bg-green-950={i !== currentWordIndex && corrects[i]}
+          class:bg-green-800={i === currentWordIndex && corrects[i]}
+          class:hover:bg-gray-700={i === currentWordIndex && !corrects[i]}
+          class:hover:bg-gray-900={i !== currentWordIndex && !corrects[i]}
+          class:hover:bg-green-900={i !== currentWordIndex && corrects[i]}
+          class:hover:bg-green-700={i === currentWordIndex && corrects[i]}
           role="button"
           tabindex="0"
           on:click={() => {
