@@ -25,7 +25,7 @@ const onload = (e: Element) => { load() }
           <div class="p-2 bg-black/60 text-white">
             <div class="flex flex-row items-center text-xs font-mono">
               <div class="flex-1">剪輯者：{clipper}</div>
-              <div class="flex-grow-0">{members.join(', ')}</div>
+              <div class="flex-grow-0">{members?.join(', ')}</div>
             </div>
             <div>{title}</div>
           </div>

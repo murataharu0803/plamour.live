@@ -30,8 +30,8 @@ const displayDate = (date: string) => {
           <img class="w-full h-auto" src={imageUrl} alt={name}>
           <div class="p-2 bg-black/60 text-white">
             <div class="flex flex-row items-center text-xs font-mono">
-              <div class="flex-grow-0 mr-2">{members.join(', ')}</div>
-              <div class="flex-1">{displayDate(publishedAt)}</div>
+              <div class="flex-grow-0 mr-2">{members?.join(', ')}</div>
+              <div class="flex-1">{publishedAt && displayDate(publishedAt)}</div>
               <div class="flex-grow-0">{type === 'original' ? '原創' : '翻唱'}</div>
             </div>
             <div>{name} - {composer}</div>
