@@ -19,7 +19,7 @@ const onload = (e: Element) => { load() }
 <div use:onload class="min-h-48">
   <ul class="timeline timeline-snap-icon timeline-vertical">
     {#each timeline as { date, description }}
-      <li>
+      <li style:grid-template-columns="minmax(0, 1fr) auto minmax(0, 2fr)">
         <hr class="bg-slate-400">
         <div class="timeline-start font-mono">{displayDate(date)}</div>
         <div class="timeline-middle mx-4">
