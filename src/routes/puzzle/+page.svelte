@@ -149,7 +149,18 @@ const win = () => {
 $: corrects = crosswordData.map(d => getWord(userGrid, d) === d.word.toUpperCase())
 $: allCorrect = corrects.every(c => c)
 </script>
-  
+
+<svelte:head>
+  <title>狗狗羊羊大冒險 - 填字遊戲</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="狗狗羊羊大冒險" />
+  <meta property="og:description" content="填字遊戲" />
+  <meta property="og:url" content="https://plamour.club" />
+  <meta name="twitter:site" content="@plamourlive" />
+  <meta name="twitter:title" content="狗狗羊羊大冒險" />
+  <meta name="twitter:description" content="填字遊戲" />
+</svelte:head>
+
 <style lang="sass">
 *[role=button]
   outline: none
