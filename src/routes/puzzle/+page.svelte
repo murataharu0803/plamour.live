@@ -143,7 +143,7 @@ const getWord = (grid: string[][], item: CrossWordItem) =>
 
 const win = () => {
   alert('恭喜！你完成了文字遊戲！\n正在準備你的半週年禮物...\n準備完成！按下確認以接受禮物！')
-  window.location.href = '/?key=plamour-half-anniversary'
+  window.location.href = '/'
 }
 
 $: corrects = crosswordData.map(d => getWord(userGrid, d) === d.word.toUpperCase())

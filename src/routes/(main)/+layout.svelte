@@ -2,12 +2,14 @@
     
 let currentPage = ''
 let loaded = false
-let isKeyCorrect = false
+// let isKeyCorrect = false
+let isKeyCorrect = true
 let scorllY = 0
 let showEgg = false
 
 const tabs = [
   { name: '半週年', href: '/' },
+  { name: '填字遊戲', href: '/puzzle' },
   { name: '里程碑', href: '/timeline' },
   { name: '二創合輯', href: '/fanart' },
   { name: '直播紀錄', href: '/archieve' },
@@ -17,7 +19,7 @@ const tabs = [
 
 const onload = (e: Element) => {
   currentPage = window.location.pathname
-  isKeyCorrect = new URLSearchParams(window.location.search).get('key') === 'plamour-half-anniversary'
+  // isKeyCorrect = new URLSearchParams(window.location.search).get('key') === 'plamour-half-anniversary'
   loaded = true
   window.addEventListener('scroll', () => {
     scorllY = window.scrollY
@@ -58,7 +60,7 @@ const onload = (e: Element) => {
       <div role="tablist" class="tabs tabs-bordered m-4">
         {#each tabs as { name, href }}
           <a
-            href={`${href}?key=plamour-half-anniversary`}
+            href={href}
             role="tab"
             class="tab"
             class:text-black={currentPage === '/'}
@@ -116,7 +118,7 @@ const onload = (e: Element) => {
       <div class="fixed bottom-4 right-4 z-20">
         <a
           class="block rounded-full bg-black/60 text-white p-2"
-          href="/?key=plamour-half-anniversary"
+          href="/"
           on:click={() => currentPage = '/'}
         >
           <svg
