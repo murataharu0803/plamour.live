@@ -7,7 +7,7 @@ export type Member = {
 }
 
 export const fetchData = async(sheet: string) => {
-  const response = await fetch(`https://cloud.plamour.club/data/12F00liFHAf4rvB6N7ZqjxdRyVAgA444bMzPEvyhr3Q8/${sheet}`)
+  const response = await fetch(`https://cloud.plamour.live/data/12F00liFHAf4rvB6N7ZqjxdRyVAgA444bMzPEvyhr3Q8/${sheet}`)
   const data = await response.json()
   return data
 }
